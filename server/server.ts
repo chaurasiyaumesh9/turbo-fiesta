@@ -16,7 +16,12 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.resolve(__dirname, "../../client/build")));
 
+app.get("*", function(req, res) {
+  res.sendFile(path.resolve(__dirname, "../../client/build/index.html"));
+  res.end();
+});
 // user
 app.get("/api/users/:id", getUser);
 
