@@ -7,16 +7,17 @@
     "npm": "6.12.0"
   },
   "scripts": {
-    "client": "cd client && npm run start",
-    "server": "cd server && npm run start",
-    "client-dep": "cd client && npm install && npm run start",
-    "server-dep": "cd server && npm install && npm run start",
-    "start:dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
-    "start": "concurrently --kill-others \"npm run server-dep\" \"npm run client-dep\""
+    "client-install": "npm install --prefix client",
+    "server-install": "npm install --prefix server",
+    "node-server": "node --prefix server/build/server.js",
+    "server": "npm start --prefix server",
+    "client": "npm start --prefix client",
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "UC",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "5.0.0"
+    "concurrently": "5.0.0",
+    "dotenv": "8.2.0"
   }
 }
