@@ -11,8 +11,8 @@
     "server": "cd server && npm run start",
     "client-dep": "cd client && npm install && npm run start",
     "server-dep": "cd server && npm install && npm run start",
-    "start:dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
-    "start": "concurrently --kill-others \"npm run client-dep\" \"npm run server-dep\""
+    "start": "concurrently --kill-others \"npm run server\" \"npm run client\"",
+    "start:dev": "concurrently --kill-others \"npm run client-dep\" \"npm run server-dep\""
   },
   "author": "UC",
   "license": "ISC",
