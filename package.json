@@ -8,12 +8,9 @@
   },
   "scripts": {
     "client": "cd client && npm run start",
-    "build-client": "cd client && npm run build",
     "server": "cd server && npm run start",
-    "client-dep": "cd client && npm install && npm run start",
-    "server-dep": "cd server && npm install && npm run start",
     "start:dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
-    "start": "cd server && npm install && tsc && node ./build/server.js",
+    "start": "cd server && npm install && npm run start",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "UC",

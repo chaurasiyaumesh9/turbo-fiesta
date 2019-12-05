@@ -5,9 +5,10 @@
   "main": "server.ts",
   "scripts": {
     "tsc": "tsc",
+    "postinstall": "npm run tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./server.ts",
     "prod": "tsc && node ./build/server.js",
-    "start": "tsc && node ./build/server.js"
+    "start": "node ./build/server.js"
   },
   "author": "",
   "license": "ISC",
