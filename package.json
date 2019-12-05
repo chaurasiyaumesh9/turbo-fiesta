@@ -13,7 +13,8 @@
     "client-dep": "cd client && npm install && npm run start",
     "server-dep": "cd server && npm install && npm run start",
     "start:dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
-    "start": "npm run build-client && npm run server"
+    "start": "cd server && npm install && node ./build/server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "UC",
   "license": "ISC",
