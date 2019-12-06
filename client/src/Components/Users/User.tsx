@@ -1,20 +1,22 @@
 import React from "react";
 import { useRouteMatch, Link } from "react-router-dom";
+import TypeUser from "./TypeUser";
 interface UserProps {
-  user: User;
+  user: TypeUser;
 }
 
 export const User: React.FC<UserProps> = ({ user }) => {
   let match = useRouteMatch();
   return (
-    <li>
-      <p className="userid">
-        <Link to={`${match.url}/${user.id}`}>
-          {" "}
-          <b>{user.id}</b>
-        </Link>
-      </p>
-      <p className="username"> {user.name}</p>
-    </li>
+    <tr>
+      <td>{user.Name}</td>
+      <td>{user.Contact}</td>
+      <td>{user.Email}</td>
+      <td>{user.Role}</td>
+      <td>{user.CreationDate}</td>
+      <td>
+        <Link to={`${match.url}/${user.ID}`}>EDIT</Link>
+      </td>
+    </tr>
   );
 };
