@@ -1,0 +1,16 @@
+@media only screen and (min-width: 768px) {
+  .userslist.browser {
+    display: block;
+  }
+  .userslist.mobile {
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .userslist.browser {
+    display: none;
+  }
+  .userslist.mobile {
+    display: block;
+  }
+}

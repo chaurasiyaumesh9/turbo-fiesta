@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "whatwg-fetch";
-import { UsersList } from "./UsersList";
-import TypeUser from "./TypeUser";
+import { UsersListBrowser } from "./UsersListBrowser";
+import { TUser } from "../../Types/TUser";
+import { UsersListMobile } from "./UsersListMobile";
 
-// const users: Array<User> = [
-//   { id: "1", name: "Umesh" },
-//   { id: "2", name: "Manish" },
-//   { id: "3", name: "Abhishek" }
-// ];
-const intialusers: Array<TypeUser> = [];
+const intialusers: Array<TUser> = [];
 export const Users: React.FC = () => {
   const [users, setUsers] = useState(intialusers);
 
@@ -18,7 +14,7 @@ export const Users: React.FC = () => {
       .then(json => {
         setUsers(
           json.map((user: any) => {
-            return new TypeUser(user);
+            return new TUser(user);
           })
         );
       });
@@ -26,7 +22,8 @@ export const Users: React.FC = () => {
   return (
     <div>
       <h2 className="text-center mt-3"> MANAGE USERS </h2>
-      <UsersList users={users} />
+      <UsersListBrowser users={users} />
+      <UsersListMobile users={users} />
     </div>
   );
 };
