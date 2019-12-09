@@ -1,5 +1,4 @@
 import React from "react";
-import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 import { User } from "./User";
 import TypeUser from "./TypeUser";
 interface UserListProps {
@@ -9,8 +8,8 @@ interface UserListProps {
 export const UsersList: React.FC<UserListProps> = ({ users }) => {
   console.log("users", users);
   return (
-    <MDBTable striped>
-      <MDBTableHead>
+    <table className="table striped">
+      <thead>
         <tr>
           <th>Name</th>
           <th>Contact</th>
@@ -19,12 +18,12 @@ export const UsersList: React.FC<UserListProps> = ({ users }) => {
           <th>Creation Date</th>
           <th>Action</th>
         </tr>
-      </MDBTableHead>
-      <MDBTableBody>
+      </thead>
+      <tbody>
         {users.map(user => {
           return <User key={user.ID} user={user} />;
         })}
-      </MDBTableBody>
-    </MDBTable>
+      </tbody>
+    </table>
   );
 };
