@@ -1,28 +1,56 @@
-/*class CloudinaryDocument {
+class CloudinaryImage {
   URL: string;
   SecureURL: string;
+  FileName: string;
+  PublicID: string;
+  Format: string;
+  Width: number;
+  Height: number;
+  Bytes?: number;
+  CreatedAt?: Date;
+  Etag?: string;
+  Placeholder?: boolean;
+  ResourceType?: string;
+  Signature?: string;
+  Tags?: Array<any>;
+  Type?: string;
+  Version: number;
 
   constructor(documentobj: any) {
     this.URL = documentobj.url;
     this.SecureURL = documentobj.secure_url;
+    this.FileName = documentobj.original_filename;
+    this.PublicID = documentobj.public_id;
+    this.Format = documentobj.format;
+    this.Width = documentobj.width;
+    this.Height = documentobj.height;
+    this.Bytes = documentobj.bytes;
+    this.CreatedAt = documentobj.created_at;
+    this.Etag = documentobj.etag;
+    this.Placeholder = documentobj.placeholder;
+    this.ResourceType = documentobj.resource_type;
+    this.Signature = documentobj.signature;
+    this.Tags = documentobj.tags;
+    this.Type = documentobj.type;
+    this.Version = documentobj.version;
   }
 }
 
-class AddressProof {
+class TypeDocument {
   Type: string;
-  Document: CloudinaryDocument;
-  constructor(addressproofobj: any) {
-    this.Type = addressproofobj.type;
-    this.Document = addressproofobj.document;
+  Document: CloudinaryImage;
+  constructor(documentobj: any) {
+    this.Type = documentobj.type;
+    this.Document = documentobj.document;
   }
-}*/
+}
 
 class TypeUser {
   Name: string;
-  AddressProof: any;
+  AddressProof: TypeDocument;
   CreationDate: Date;
   Gender: string;
-  IDProof: any;
+  IDProof: TypeDocument;
   Inactive: boolean;
   Password: string;
   Contact: string;
