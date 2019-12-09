@@ -12,7 +12,7 @@ export const UsersListMobile: React.FC<UserListProps> = ({ users }) => {
     <div className="userslist mobile">
       {users.map((user: TUser, index: number) => {
         return (
-          <>
+          <div key={index}>
             <Card>
               <Card.Header>{user.Role}</Card.Header>
               <Card.Img variant="top" src={user.Photo.URL} />
@@ -31,7 +31,7 @@ export const UsersListMobile: React.FC<UserListProps> = ({ users }) => {
               </Card.Footer>
             </Card>
             <hr />
-          </>
+          </div>
         );
       })}
     </div>

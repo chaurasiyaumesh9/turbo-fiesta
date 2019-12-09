@@ -11,3 +11,8 @@
 //   _id: string;
 //   userType: string;
 // };
+
+type Option = {
+  label: string;
+  value: string;
+};
