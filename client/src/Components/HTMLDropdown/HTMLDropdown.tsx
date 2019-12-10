@@ -17,7 +17,7 @@ export const HTMLDropdown: React.FC<Options> = ({
 }) => {
   return (
     <div className="html-dropdown">
-      <label className="col-form-label" htmlFor={id}>
+      <label className="form-label" htmlFor={id}>
         {caption}
       </label>
       <select

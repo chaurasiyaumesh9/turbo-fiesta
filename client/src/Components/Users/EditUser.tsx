@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import { TUser, TCloudImage, TDocument } from "../../Types/TUser";
 import Col from "react-bootstrap/Col";
 import { HTMLDropdown } from "../HTMLDropdown/HTMLDropdown";
+import { Roles, ResidenceProofs, IDProofs, Genders } from "../../Types/User";
+import { HTMLRadioButtons } from "../HTMLRadioButtons/HTMLRadioButtons";
 
 const intialuser: TUser = new TUser({
   Name: "",
@@ -30,28 +32,7 @@ export const EditUser: React.FC = () => {
         setUser(new TUser(json));
       });
   }, [id]);
-  const RoleOptions: Array<Option> = [
-    {
-      label: "SELECT USER ROLE",
-      value: ""
-    },
-    {
-      label: "ADMIN",
-      value: "admin"
-    },
-    {
-      label: "ON-FIELD-USER",
-      value: "on-field-user"
-    },
-    {
-      label: "VENDOR",
-      value: "vendor"
-    },
-    {
-      label: "CUSTOMER",
-      value: "customer"
-    }
-  ];
+
   const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const key: string = e.target.name;
     const value: string = e.target.value;
@@ -77,6 +58,18 @@ export const EditUser: React.FC = () => {
   const handleRoleSelection = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const updatedUser: TUser = Object.assign({}, user);
     updatedUser.Role = e.target.value;
+    setUser(updatedUser);
+  };
+  const handleAddressProofSelection = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const updatedUser: TUser = Object.assign({}, user);
+    updatedUser.AddressProof.Type = e.target.value;
+    setUser(updatedUser);
+  };
+  const handleIDProofSelection = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const updatedUser: TUser = Object.assign({}, user);
+    updatedUser.IDProof.Type = e.target.value;
     setUser(updatedUser);
   };
   return (
@@ -127,9 +120,10 @@ export const EditUser: React.FC = () => {
               changeHandler={(event: React.ChangeEvent<HTMLSelectElement>) =>
                 handleRoleSelection(event)
               }
-              options={RoleOptions}
+              options={Roles}
             />
           </Form.Group>
+
           <Form.Group as={Col}>
             <Form.Label> Password </Form.Label>
             <Form.Control
@@ -139,6 +133,47 @@ export const EditUser: React.FC = () => {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 handleUserInput(event)
               }
+            />
+          </Form.Group>
+        </Form.Row>
+
+        <Form.Row>
+          <Form.Group as={Col}>
+            <HTMLRadioButtons
+              id="gender"
+              name="gender"
+              caption="Gender"
+              value={user.Gender}
+              changeHandler={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleUserInput(event)
+              }
+              options={Genders}
+            />
+          </Form.Group>
+        </Form.Row>
+        <Form.Row>
+          <Form.Group as={Col}>
+            <HTMLDropdown
+              id="IDProof"
+              caption="Proof of ID"
+              value={user.IDProof.Type}
+              changeHandler={(event: React.ChangeEvent<HTMLSelectElement>) =>
+                handleIDProofSelection(event)
+              }
+              options={IDProofs}
+            />
+          </Form.Group>
+        </Form.Row>
+        <Form.Row>
+          <Form.Group as={Col}>
+            <HTMLDropdown
+              id="AddressProof"
+              caption="Proof of Residence"
+              value={user.AddressProof.Type}
+              changeHandler={(event: React.ChangeEvent<HTMLSelectElement>) =>
+                handleAddressProofSelection(event)
+              }
+              options={ResidenceProofs}
             />
           </Form.Group>
         </Form.Row>
